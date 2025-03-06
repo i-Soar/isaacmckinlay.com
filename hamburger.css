@@ -1,0 +1,57 @@
+:root {
+    --hamburger-line-height: 3px;
+    --hamburger-line-length: 40px;
+    --hamburger-line-spacing: 13px;
+    --hamburger-height: 50px;
+    --hamburger-padding: 8px;
+    --hamburger-margin: 0px;
+    --hamburger-corner-radius: 10px;
+}
+
+#hamburger {
+    display: inline; /* can be anything */
+    position: relative;
+    appearance: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    background-clip: content-box;
+    float:right;
+    transition: background-color 0.2s;
+
+    background-color: whitesmoke;
+    border: 3px solid white;
+    border-radius: var(--hamburger-corner-radius);
+    margin: var(--hamburger-margin);
+    padding: calc((var(--hamburger-height) - var(--hamburger-line-height)) / 2) var(--hamburger-padding);
+    width: var(--hamburger-line-length);
+    height: var(--hamburger-line-height);
+}
+#hamburger:hover {
+    --hamburger-padding: 10px;
+    --hamburger-height: 52px;
+    transition:0.5s;
+}
+#hamburger:checked {
+    background-color: transparent;
+}
+
+#hamburger::before, #hamburger::after {
+    content: '';
+    position: absolute;
+    transition: transform 0.2s;
+    background: whitesmoke;
+    width: var(--hamburger-line-length);
+    height: var(--hamburger-line-height);
+}
+#hamburger::before {
+    top: calc(var(--hamburger-height) / 2 - var(--hamburger-line-spacing) - var(--hamburger-line-height) / 2)
+}
+#hamburger::after {
+    top: calc(var(--hamburger-height) / 2 + var(--hamburger-line-spacing) - var(--hamburger-line-height) / 2)
+}
+#hamburger:checked::before {
+    transform: rotate(45deg) translate(calc(var(--hamburger-line-spacing) / 1.4142135624), calc(var(--hamburger-line-spacing) / 1.4142135624))
+}
+#hamburger:checked::after {
+    transform: rotate(-45deg) translate(calc(var(--hamburger-line-spacing) / 1.4142135624), calc(var(--hamburger-line-spacing) * -0.7071067812))
+}
